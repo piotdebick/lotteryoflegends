@@ -1,0 +1,28 @@
+.champion {
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  transition: background .3s ease;
+
+  p, input {
+    margin: 0;
+  }
+
+  &:hover {
+    background: #f0f0f0;
+    transition: background .3s ease;
+  }
+}
+
+.champion-chosen {
+  height:4rem;
+  width:4rem;
+}
+
+.champion-selected {
+    opacity: 0.5;
+    color: $light-grey;
+    text-decoration: line-through;
+}

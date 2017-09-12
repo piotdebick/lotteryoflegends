@@ -45,6 +45,14 @@ module.exports = (env) => {
         })
       }]
     },
+    resolve: {
+      alias: {
+        actions: path.resolve(__dirname, 'src/actions/actions.js'),
+        reducers: path.resolve(__dirname, 'src/reducers/reducers.js'),
+        components: path.resolve(__dirname, 'src/components'),
+        AppRouter: path.resolve(__dirname, 'src/routers/AppRouter.js')
+      }
+    },
     plugins: [
       CSSExtract
     ],
