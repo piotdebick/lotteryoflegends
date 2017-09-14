@@ -99,7 +99,7 @@ export var login = (user) => {
   return async (dispatch, getState) => {
     try{
       dispatch(requestAttempt({
-        type: 'LOGIN_ATTEMPT',
+        type: 'SET_USER_DATA',
         info: user
       }));
       var res = await axios.post('http://localhost:3001/users/login', {
@@ -200,13 +200,13 @@ export var checkAuthToken = (authToken) => {
         info: authToken
       }));
       dispatch(requestAttempt({
-        type:'LOGIN_ATTEMPT',
+        type:'SET_USER_DATA',
         info: res.data
       }));
-      dispatch(requestSuccess({
-        type:'LOGIN_SUCCESS',
-        info: res
-      }));
+      // dispatch(requestSuccess({
+      //   type:'LOGIN_SUCCESS',
+      //   info: res
+      // }));
     } catch (e) {
       dispatch(requestFailed({
         type:'BAD_TOKEN',

@@ -5,9 +5,22 @@ import {resetChampionState} from 'actions';
 import Champion from './Champion';
 
 class ChosenChampions extends React.Component {
-  submitChampions (chosen) {
-    var {dispatch} = this.props;
+  async submitChampions (chosen) {
+    var {dispatch, userID, token} = this.props;
     dispatch(resetChampionState(chosen));
+    try{
+      await axios.post('http://localhost:3001/pick', {
+          "championPicks": chosen,
+          "_creator": userID
+        }, {
+          headers: {
+            "x-auth": token
+          }
+        }
+      );
+    } catch (e) {
+      Promise.reject(new Error('something went wrong'));
+    }
   }
 
   render () {
@@ -51,6 +64,8 @@ class ChosenChampions extends React.Component {
 module.exports = connect(
   (state) => {
     return {
+      token: state.auth.authToken,
+      userID: state.user.userID,
       chosen: state.chosen
     };
   }

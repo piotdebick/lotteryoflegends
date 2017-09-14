@@ -86,11 +86,12 @@ export var signupReducer = (state = {isSubmitting: false, isSignedUp: false, err
 
 export var userReducer = (state={username:'', region:'', isFetching:false, error:null }, action) => {
   switch(action.type){
-    case 'LOGIN_ATTEMPT':
+    case 'SET_USER_DATA':
       return {
         ...state,
         isFetching: true,
         username: action.info.username,
+        userID: action.info._id,
         region: action.info.region
       };
     case 'LOGIN_SUCCESS':
