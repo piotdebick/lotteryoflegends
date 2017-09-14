@@ -1,32 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {resetChampionState} from 'actions';
 import Champion from './Champion';
 
 class ChosenChampions extends React.Component {
-  constructor () {
-    super();
-    this.state = {error: '', buttonMessage: ''};
-  }
   submitChampions (chosen) {
-    if(chosen.length === 14){
-      console.log('success');
-    }
-    else {
-      this.setState ({ error: `You have ${14 - chosen.length} left to choose!` });
-    }
+    var {dispatch} = this.props;
+    dispatch(resetChampionState(chosen));
   }
-  componentDidUpdate(){
-    var {chosen} = this.props;
-    let notPicked = 14 - chosen.length;
-    if(notPicked === 0) {
-      this.setState ({ buttonMessage: `Submit Champions!` });
-    } else {
-      this.setState ({ buttonMessage: `You have ${notPicked} left to choose!` });
-    }
-  }
+
   render () {
     var {chosen} = this.props;
+    var message, className, isDisabled=true;
+    if(chosen.length < 14){
+      message = `You have ${14-chosen.length} left to choose`;
+      className = 'button-disabled';
+      isDisabled = true;
+    } else {
+      message = 'Submit Champions!';
+      className = 'button';
+      isDisabled = false;
+    }
+
     var renderChampions = () => {
        return chosen.map((champion) => {
         return (
@@ -44,8 +40,9 @@ class ChosenChampions extends React.Component {
           </div>
           {renderChampions()}
         </ul>
-        <div className='error'>{this.state.error}</div>
-        <button onClick={() => this.submitChampions(this.props.chosen)} className='button'>{this.state.buttonMessage}</button>
+        <button onClick={() => this.submitChampions(this.props.chosen)}
+          disabled={isDisabled}
+          className={className}>{message}</button>
       </div>
     )
   }

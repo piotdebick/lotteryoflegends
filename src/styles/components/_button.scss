@@ -4,6 +4,7 @@
   border: none;
   border-bottom: 5px solid darken($blue, 15%);
   color: white;
+  max-height:$xl-size;
   display: inline-block;
   font-size: $font-size-large;
   font-weight: 300;
@@ -15,4 +16,10 @@
       border-bottom: 0;
       background-clip: padding-box;
   }
+}
+
+.button-disabled {
+  @extend .button;
+  background: $light-red;
+  border-bottom: 5px solid darken($light-red, 15%);
 }

@@ -27,6 +27,7 @@ export var toggleChampion = (id) => {
     id
   };
 };
+
 export var setToken = (authToken) => {
   return {
     type: 'SET_TOKEN',
@@ -63,6 +64,15 @@ export var requestFailed = (data) => {
     error: data.error
   }
 }
+
+export var resetChampionState = (champions) => {
+  return async (dispatch, getState) => {
+    for(var champ in champions){
+      dispatch(toggleChampion(champions[champ].id));
+      dispatch(removeChampion(champions[champ].id));
+    }
+  };
+};
 
 export var championsFetch = () => {
   return async (dispatch, getState) => {

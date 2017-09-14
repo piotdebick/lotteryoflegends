@@ -9,7 +9,7 @@ class Champion extends React.Component {
     if(styleThis){
       championClassName = chosen ? 'list-item__data list-item__data-selected' : 'list-item__data';
     } else {
-      championClassName = 'list-item__data champion-chosen';
+      championClassName = 'list-item__data';
     }
     var champImage = 'http://ddragon.leagueoflegends.com/cdn/7.17.1/img/champion/' + champ + '.png';
     return (
