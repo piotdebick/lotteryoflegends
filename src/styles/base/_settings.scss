@@ -3,16 +3,24 @@ $dark-grey: #333;
 $grey: #333333;
 $light-grey: #fafafa;
 $light-grey-border: #eeeeee;
-$water-blue: #336699;
 $blue: #1c88bf;
+$water-blue: #336699;
 $dark-blue: #364051;
 $off-white: #f7f7f7;
+$light-red: #ff9e95;
+
+$trans-black: rgba(0, 0, 0, 0.68);
+$trans-white: rgba(#ffffff, 0.53);
+
+
 // Font Size
 $font-size-large: 1.8rem;
 $font-size-small: 1.4rem;
 // Spacing
+$xs-size: 0.4rem;
 $s-size: 1.2rem;
 $m-size: 1.6rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
+$xxl-size: 6.4rem;
 $desktop-breakpoint: 45rem;

@@ -19,9 +19,9 @@ class DashboardPage extends React.Component {
     return (
       <div>
         <Header authToken={this.props.auth}/>
-        <div className="row">
-          <div className="content-container">
-            <div className="container">
+        <div>
+          <div className='container'>
+            <div className='box-alt'>
               <ChampionSearch/>
               <ChampionList/>
               <ChosenChampions/>

@@ -4,21 +4,23 @@ import {addChampion, removeChampion, toggleChampion} from 'actions';
 
 class Champion extends React.Component {
   render () {
-    var {name, id, styleThis, champ, chosen, dispatch} = this.props;
+    var {name, id, champ, chosen, dispatch, clickable, styleThis} = this.props;
     var championClassName;
     if(styleThis){
-      championClassName = chosen ? 'champion champion-selected' : 'champion';
+      championClassName = chosen ? 'list-item__data list-item__data-selected' : 'list-item__data';
     } else {
-      championClassName = 'champion champion-chosen';
+      championClassName = 'list-item__data champion-chosen';
     }
     var champImage = 'http://ddragon.leagueoflegends.com/cdn/7.17.1/img/champion/' + champ + '.png';
     return (
       <div className={championClassName} onClick={()=>{
-        dispatch(toggleChampion(id));
-        if(!chosen) {
-          dispatch(addChampion({id, champ}));
-        } else {
-          dispatch(removeChampion(id));
+        if(clickable || chosen){
+          dispatch(toggleChampion(id));
+          if(!chosen) {
+            dispatch(addChampion({id, champ}));
+          } else {
+            dispatch(removeChampion(id));
+          }
         }
         }}>
           <input className={championClassName} type="image" src={champImage} onChange={()=>{}}/>

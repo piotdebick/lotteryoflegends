@@ -44,25 +44,25 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
-
-        <p>Sign up with your Summoner name!</p>
+      <div className='container'>
+        <div className='box'>
+          <div className='box__title'>
+            <h2>LOTTERY OF LEGENDS</h2>
+            <h4>Register with your Summoner name!</h4>
+          </div>
           <LocalForm
+            className='form'
             model="user"
             onSubmit={(user) => this.handleSubmit(user)}
             initialState={{region: 'na1'}}
           >
-            <label htmlFor="user.username">Summoner name</label>
-            <Control.text model="user.username" id="user.username" required/>
+            <Control.text className='form__input' model="user.username" id="user.username" placeholder='Summoner Name' required/>
 
-            <label htmlFor="user.password">Password</label>
-            <Control.text model="user.password" type="password" id="user.password" required/>
+            <Control.text className='form__input' model="user.password" type="password" id="user.password" placeholder='Password' required/>
 
-            <label htmlFor="user.password">Confirm Password</label>
-            <Control.text model="user.confirmPassword" type="password" id="user.confirmPassword" required/>
+            <Control.text className='form__input' model="user.confirmPassword" type="password" id="user.confirmPassword" placeholder='Confirm password'required/>
 
-            <label htmlFor="user.region">Region</label>
-            <Control.select model="user.region" id="user.region" required>
+            <Control.select className='form__input' model="user.region" id="user.region" required>
               <option value="na1">NA</option>
               <option value="br1">BR</option>
               <option value="eun1">EUNE</option>
@@ -77,19 +77,17 @@ class Register extends React.Component {
               <option value="pbe1">NA</option>
             </Control.select>
 
-            <label htmlFor="user.code">
-              Change your first mastery page name to the code provided to validate your account
-            </label>
-            <div className="callout small primary">
-              <div className="centered">
+            <div className='form__text'>
+              Change your first mastery page to the code provided to validate your account
+              <div className='form__subtext'>
                 {this.state.code}
               </div>
             </div>
-            <button type="submit" className="button">Sign up!</button>
-            <button type="button" className="button" onClick={()=>{history.push('/')}}>Back</button>
+            <button className='button' type="submit">Sign up!</button>
+            <button className='button' type="button" onClick={()=>{history.push('/')}}>Back</button>
           </LocalForm>
-
         </div>
+      </div>
   );
   }
 };

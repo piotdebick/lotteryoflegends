@@ -1,12 +1,30 @@
 .form {
   display: flex;
+  padding: 0 $l-size;
+  //border: 3px solid white;
   flex-direction: column;
-  >* {
+  >*{
     margin-bottom: $m-size;
   }
 }
 
-.form__error {
-  margin: 0 0 $m-size 0;
-  font-style: italic;
+.form__input {
+  padding:$m-size;
+}
+
+.form__text {
+  color:white;
+  text-align:center;
+  font-weight:bold;
+  padding:$m-size;
+  background-color: $light-red;
+  border-bottom: darken($light-red, 10%);
+}
+
+.form__subtext {
+  text-align:center;
+  font-weight:bolder;
+  padding:$s-size;
+  margin: $s-size $s-size 0 $s-size;
+  background-color: darken($light-red, 10%);
 }

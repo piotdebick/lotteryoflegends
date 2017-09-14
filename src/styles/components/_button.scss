@@ -1,6 +1,8 @@
 .button {
+  outline:none;
   background: $blue;
   border: none;
+  border-bottom: 5px solid darken($blue, 15%);
   color: white;
   display: inline-block;
   font-size: $font-size-large;
@@ -8,12 +10,9 @@
   line-height: 1;
   padding: $s-size;
   text-decoration: none;
-}
-
-.button--link {
-  background: none;
-}
-
-.button--secondary {
-  background: #888;
+  &:hover{
+      border-top: 5px solid rgba(0, 0, 0, 0.01);
+      border-bottom: 0;
+      background-clip: padding-box;
+  }
 }

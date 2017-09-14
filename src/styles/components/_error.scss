@@ -1,0 +1,10 @@
+.error {
+  max-width: 45rem;
+  max-height: 5rem;
+  background-color: darken($light-red, 10%);
+  text-align: center;
+  margin:auto;
+  padding:$m-size;
+  font-weight: bolder;
+  color: $off-white;
+}
