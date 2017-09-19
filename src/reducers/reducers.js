@@ -8,17 +8,43 @@ export var searchTextReducer = (state='', action) => {
   };
 };
 
-export var leagueReducer = (state = {isFetching: false, champions: []}, action) => {
+export var leagueReducer = (state = {isFetching: false, champions: [], freeChampions: [], tickets: []}, action) => {
   switch (action.type) {
     case 'START_CHAMPIONS_FETCH':
       return {
+        ...state,
         isFetching: true,
         champions: []
       };
     case 'COMPLETE_CHAMPIONS_FETCH':
       return {
+        ...state,
         isFetching: false,
         champions: action.info
+      };
+    case 'START_FREE_CHAMPIONS_FETCH':
+      return {
+        ...state,
+        isFetching: true,
+        freeChampions: []
+      };
+    case 'COMPLETE_FREE_CHAMPIONS_FETCH':
+      return {
+        ...state,
+        isFetching: false,
+        freeChampions: action.info
+      };
+    case 'START_TICKET_FETCH':
+      return {
+        ...state,
+        isFetching: true,
+        tickets: []
+      };
+    case 'COMPLETE_TICKET_FETCH':
+      return {
+        ...state,
+        isFetching: false,
+        tickets: action.info
       };
     case 'TOGGLE_CHAMPION':
       var champs = state.champions;
@@ -89,7 +115,7 @@ export var userReducer = (state={username:'', region:'', isFetching:false, error
     case 'SET_USER_DATA':
       return {
         ...state,
-        isFetching: true,
+        isFetching: false,
         username: action.info.username,
         userID: action.info._id,
         region: action.info.region
@@ -136,16 +162,19 @@ export const authReducer = (state={isAuthenticated: false, authToken: '', error:
   switch(action.type){
     case 'SET_TOKEN':
       return {
+        ...state,
         isAuthenticated: true,
         authToken: action.info
       };
     case 'REMOVE_TOKEN':
       return {
+        ...state,
         isAuthenticated: false,
         authToken: ''
       };
     case 'BAD_TOKEN':
       return {
+        ...state,
         isAuthenticated: false,
         error: action.error
       };

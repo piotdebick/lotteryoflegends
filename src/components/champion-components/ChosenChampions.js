@@ -1,8 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import { history } from 'AppRouter';
+
 import {resetChampionState} from 'actions';
-import Champion from './Champion';
+import ChampionContainer from './ChampionContainer';
 
 class ChosenChampions extends React.Component {
   async submitChampions (chosen) {
@@ -18,6 +20,7 @@ class ChosenChampions extends React.Component {
           }
         }
       );
+      history.push('/dashboard');
     } catch (e) {
       Promise.reject(new Error('something went wrong'));
     }
@@ -40,7 +43,7 @@ class ChosenChampions extends React.Component {
        return chosen.map((champion) => {
         return (
           <li className='list-item' key={champion.champ}>
-            <Champion styleThis={false} {...champion}/>
+            <ChampionContainer styleThis={false} {...champion}/>
           </li>
         )
       })

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Champion from './Champion';
+import ChampionContainer from './ChampionContainer';
 
 class ChampionList extends React.Component {
   render () {
@@ -18,7 +18,7 @@ class ChampionList extends React.Component {
        }).map((champion) => {
         return (
           <li className='list-item' key={champion.id}>
-            <Champion styleThis={true} clickable={isClickable} champ={champion.key} {...champion}/>
+            <ChampionContainer styleThis={true} clickable={isClickable} champ={champion.key} {...champion}/>
           </li>
         )
       })

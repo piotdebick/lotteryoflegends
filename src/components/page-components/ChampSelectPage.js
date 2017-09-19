@@ -12,7 +12,12 @@ import ChosenChampions from '../champion-components/ChosenChampions';
 class ChampSelectPage extends React.Component {
   componentDidMount () {
     var {dispatch} = this.props;
-    dispatch(championsFetch());
+    let type = {
+      start: 'START_CHAMPIONS_FETCH',
+      complete: 'COMPLETE_CHAMPIONS_FETCH',
+      fail: 'FAIL_CHAMPIONS_FETCH'
+    }
+    dispatch(championsFetch('http://localhost:3001/champs', type));
   }
 
   render () {

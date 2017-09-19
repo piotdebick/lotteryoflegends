@@ -1,6 +1,8 @@
 import React from 'react';
 import { Control, LocalForm } from 'react-redux-form';
+import { connect } from 'react-redux';
 import { history } from 'AppRouter';
+import {checkAuthToken} from 'actions';
 import axios from 'axios';
 
 class Register extends React.Component {
@@ -11,11 +13,16 @@ class Register extends React.Component {
 
   async handleSubmit (user) {
     try {
+      var {dispatch} = this.props;
       var res = await axios.post('http://localhost:3001/users', {
         username: user.username,
         password: user.password,
-        region: user.region
+        region: user.region,
+        code: this.state.code
       });
+      dispatch(checkAuthToken(res.headers['x-auth']));
+      localStorage.setItem('authToken', res.headers['x-auth']);
+      history.push('/dashboard');
     } catch (e) {
       this.setState((prevState, props) => {
         return {

@@ -7,8 +7,11 @@
 }
 
 .container__title {
+  //border: 3px solid white;
   align-self: auto;
-  font-size: $l-size;
+  text-align: center;
+  color:white;
+  font-size: $m-size;
   font-weight: bolder;
 }
 .container__subtitle{

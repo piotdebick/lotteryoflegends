@@ -6,12 +6,14 @@
   height:60rem;
 
 }
+
 .box-alt {
   padding: $m-size;
   justify-content:center;
   //border: 3px solid blue;
-  width:100rem;
+  width:auto;
 }
+
 .box__title{
   text-align:center;
   color: $off-white;

@@ -74,46 +74,66 @@ export var resetChampionState = (champions) => {
   };
 };
 
-export var championsFetch = () => {
+export var championsFetch = (request, type) => {
   return async (dispatch, getState) => {
     dispatch(requestAttempt({
-      type: 'START_CHAMPIONS_FETCH',
+      //START_CHAMPIONS_FETCH
+      type: type.start,
       info: ''
     }));
     try{
-      var champions = await axios.get('http://localhost:3001/champs');
+      var champions = await axios.get(request);
       dispatch(requestSuccess({
-        type: 'COMPLETE_CHAMPIONS_FETCH',
+        //COMPLETE_CHAMPIONS_FETCH
+        type: type.complete,
         info: champions.data
       }));
     } catch (e) {
       dispatch(requestFailed({
-        type: 'FAIL_CHAMPIONS_FETCH',
+        //FAIL_CHAMPIONS_FETCH
+        type: type.fail,
         error: e
       }))
     }
   };
 };
 
+export var ticketFetch = (userID, type) => {
+  return async(dispatch, getState) => {
+    dispatch(requestAttempt({
+      //START_TICKET_FETCH
+      type: type.start,
+      info: ''
+    }));
+    try{
+      var res = await axios.get(`http://localhost:3001/pick/user/${userID}`);
+      dispatch(requestSuccess({
+        //COMPLETE_TICKET_FETCH
+        type: type.complete,
+        info: res.data.picks
+      }));
+    } catch (e) {
+      dispatch(requestFailed({
+        //FAIL_TICKET_FETCH
+        type: type.fail,
+        error: e
+      }))
+    }
+  }
+}
+
 export var login = (user) => {
   return async (dispatch, getState) => {
     try{
-      dispatch(requestAttempt({
-        type: 'SET_USER_DATA',
-        info: user
-      }));
       var res = await axios.post('http://localhost:3001/users/login', {
           username: user.username,
           password: user.password,
           region: user.region
       });
+      dispatch(checkAuthToken(res.headers['x-auth']));
       dispatch(requestSuccess({
         type: 'LOGIN_SUCCESS',
         info: res
-      }));
-      dispatch(requestSuccess({
-        type:'SET_TOKEN',
-        info: res.headers['x-auth']
       }));
     } catch (e) {
       dispatch(requestFailed({
@@ -130,11 +150,7 @@ export var logout = (token) => {
       dispatch(requestAttempt({
         type:'LOGOUT_ATTEMPT'
       }));
-      await axios.delete('http://localhost:3001/users/me/token',{
-        headers: {
-          "x-auth": token
-        }
-      });
+      await axios.delete('http://localhost:3001/users/me/token');
       dispatch(requestSuccess({
         type:'LOGOUT_SUCCESS'
       }));
@@ -160,7 +176,8 @@ export var signup = (user) => {
       var res = await axios.post('http://localhost:3001/users', {
         username: user.username,
         password: user.password,
-        region: user.region
+        region: user.region,
+        code: user.code
       });
       dispatch(requestSuccess({
         type:'SIGNUP_SUCCESS',
@@ -190,11 +207,9 @@ export var secretCode = () => {
 export var checkAuthToken = (authToken) => {
   return async (dispatch, getState) => {
     try {
-      var res = await axios.get('http://localhost:3001/users/me',{
-        headers: {
-          "x-auth": authToken
-        }
-      });
+      axios.defaults.headers.common['x-auth'] = authToken;
+      var res = await axios.get('http://localhost:3001/users/me');
+
       dispatch(requestSuccess({
         type:'SET_TOKEN',
         info: authToken
@@ -203,10 +218,7 @@ export var checkAuthToken = (authToken) => {
         type:'SET_USER_DATA',
         info: res.data
       }));
-      // dispatch(requestSuccess({
-      //   type:'LOGIN_SUCCESS',
-      //   info: res
-      // }));
+
     } catch (e) {
       dispatch(requestFailed({
         type:'BAD_TOKEN',
