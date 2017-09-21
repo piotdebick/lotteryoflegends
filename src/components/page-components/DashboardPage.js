@@ -7,6 +7,14 @@ import Header from './Header';
 import ChampionDisplay from './ChampionDisplay';
 
 class DashboardPage extends React.Component {
+  checkTickets (user, dispatch) {
+    var type = {
+      start: 'START_TICKET_FETCH',
+      complete: 'COMPLETE_TICKET_FETCH',
+      fail: 'FAIL_TICKET_FETCH'
+    }
+    dispatch(ticketFetch(user, type));
+  }
   componentDidMount () {
     var {dispatch, userID} = this.props;
     let type = {
@@ -16,16 +24,14 @@ class DashboardPage extends React.Component {
     }
     dispatch(championsFetch('http://localhost:3001/champs/free', type));
     //dispatch for previous tickets
+    if(userID){
+      this.checkTickets(userID, dispatch);
+    }
   }
   componentWillReceiveProps(nextProps){
-    if(this.props.userID != nextProps.userID){
-      var {dispatch} = this.props;
-      var type = {
-        start: 'START_TICKET_FETCH',
-        complete: 'COMPLETE_TICKET_FETCH',
-        fail: 'FAIL_TICKET_FETCH'
-      }
-      dispatch(ticketFetch(nextProps.userID, type));
+    var {userID, dispatch} = this.props;
+    if(userID != nextProps.userID){
+      this.checkTickets(nextProps.userID, dispatch)
     }
   }
 
@@ -40,16 +46,28 @@ class DashboardPage extends React.Component {
     }
   }
 
+  checkSubmissions() {
+    var {submissions} = this.props;
+    if(submissions < 1) {
+      return (
+        <div className='big-button' onClick={()=>{history.push('/champselect')}}>SUBMIT THIS WEEKS CHAMPION TICKET</div>
+      )
+    } else {
+      return (
+        <div className='button-disabled'>THIS WEEKS TICKET HAS BEEN SUBMITTED</div>
+      )
+    }
+  }
+
   render () {
     return (
       <div>
-        <Header authToken={this.props.auth}/>
         <div>
           <div className='container'>
-            <div className='box-alt'>
+            <div className='box'>
               <div className='container__title'>THIS WEEKS FREE CHAMPIONS</div>
                 <ChampionDisplay champions={this.props.freeChamps}/>
-              <div className='button' onClick={()=>{history.push('/champselect')}}>SUBMIT A NEW CHAMPION TICKET</div>
+                {this.checkSubmissions()}
               <div className='container__title'>PREVIOUS TICKETS</div>
               {this.previousTickets(this.props.tickets)}
             </div>
@@ -65,7 +83,8 @@ const mapStateToProps = (state) => {
     tickets: state.league.tickets,
     freeChamps:state.league.freeChampions,
     auth: state.auth,
-    userID: state.user.userID
+    userID: state.user.userID,
+    submissions: state.user.submissions
   };
 }
 export default connect(mapStateToProps)(DashboardPage);

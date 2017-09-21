@@ -1,17 +1,20 @@
 .box {
+  margin: auto;
   padding: $m-size;
-  justify-content:center;
+  max-width: 70rem;
   //border: 3px solid white;
-  width:50rem;
-  height:60rem;
-
+  justify-content:center;
+  background-color: $trans-blue;
+  border-radius: 10px;
 }
 
 .box-alt {
+  @extend .box;
   padding: $m-size;
-  justify-content:center;
+  overflow-y: scroll;
+  height:35rem;
+  border-bottom: 2px double $trans-black;
   //border: 3px solid blue;
-  width:auto;
 }
 
 .box__title{

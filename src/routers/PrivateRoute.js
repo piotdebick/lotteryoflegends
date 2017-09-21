@@ -5,12 +5,14 @@ import Header from 'components/page-components/Header';
 
 export const PrivateRoute = ({
   isAuthenticated,
+  authToken,
   component: Component,
   ...rest
 }) => (
     <Route {...rest} component={(props) => (
       isAuthenticated ? (
         <div>
+          <Header authToken={authToken} isAuth={isAuthenticated}/>
           <Component {...props} />
         </div>
       ) : (
@@ -20,7 +22,8 @@ export const PrivateRoute = ({
   );
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  authToken: state.auth.authToken
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

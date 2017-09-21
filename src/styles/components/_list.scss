@@ -8,12 +8,11 @@
 }
 
 .list-body {
-  //border: 3px solid white;
-  border-bottom: 2px double $trans-black;
+  // border: 3px solid red;
+  padding:0;
   display:flex;
   flex-wrap: wrap;
-  height:25rem;
-  overflow-y: auto;
+  justify-content: space-around;
   @media (min-width: $desktop-breakpoint) {
     margin-bottom: $l-size;
 
@@ -27,24 +26,22 @@
 
 .list-body-small{
   padding: $s-size 0;
-  //border: 2px solid white;
+  border: 2px solid blue;
   box-shadow: 0 0 2.5rem 2rem $trans-black;
-  background-color: $trans-black;
+  border-radius: 10px;
+  height:27rem;
   border:0;
-  margin:auto;
+    margin: 0 10rem;
   margin-bottom: $l-size;
   justify-content: center;
   align-content: flex-start;
-  max-height: 25rem;
   width: 43rem;
 }
 
 .list-body-display {
 
   @extend .list-body-small;
-  //border: 2px solid white;
-  width:auto;
-  height:auto;
+  //border: 2px solid green;
 }
 
 .list-item {
@@ -60,10 +57,6 @@
   display: inline-flex;
   text-decoration: none;
   transition: background .3s ease;
-  &:hover {
-    opacity: 0.5;
-    border-bottom: 2px solid darken($blue, 10%);
-  }
   @media (min-width: $desktop-breakpoint) {
     flex-direction: row;
   }
@@ -86,11 +79,13 @@
 }
 
 .list-item__sub-title {
-  color: $grey;
+  color: white;
   font-size: $font-size-small;
 }
 
 .list-item__display {
+  border: 2px solid black;
+  border-radius:100%;
   outline:none;
   max-height:100%;
   max-width:100%;
@@ -101,6 +96,10 @@
 
 }
 
-.list-item__data-selected {
-  opacity: 0.5;
+.list-item__data-hover {
+  &:hover {
+    opacity: 0.5;
+    border-bottom: 2px solid darken($blue, 10%);
+    border-radius:100%;
+  }
 }

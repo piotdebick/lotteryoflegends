@@ -13,17 +13,17 @@ const store = configureStore();
 var token = localStorage.getItem('authToken');
 if(token){
   store.dispatch(checkAuthToken(token));
-  axios.defaults.headers.common['x-auth'] = token;
 }
 var listener = () => {
   var state = store.getState();
   if (state.auth.isAuthenticated) {
     renderApp();
-    if (history.location.pathname === '/') {
+    if (history.location.pathname === '/'
+    ||  history.location.pathname === '/login'
+    || history.location.pathname === '/register'
+    || history.location.pathname === '/about'
+    ) {
       history.push('/dashboard');
-    }
-    if(token ==='undefined' || token === '' || !token){
-      localStorage.setItem('authToken', state.auth.authToken);
     }
   } else {
     renderApp();

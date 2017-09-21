@@ -110,7 +110,7 @@ export var signupReducer = (state = {isSubmitting: false, isSignedUp: false, err
   }
 };
 
-export var userReducer = (state={username:'', region:'', isFetching:false, error:null }, action) => {
+export var userReducer = (state={username:'', region:'', submissions: 0, isFetching:false, error:null }, action) => {
   switch(action.type){
     case 'SET_USER_DATA':
       return {
@@ -118,7 +118,8 @@ export var userReducer = (state={username:'', region:'', isFetching:false, error
         isFetching: false,
         username: action.info.username,
         userID: action.info._id,
-        region: action.info.region
+        region: action.info.region,
+        submissions: action.info.submissions
       };
     case 'LOGIN_SUCCESS':
       return {
@@ -151,6 +152,11 @@ export var userReducer = (state={username:'', region:'', isFetching:false, error
         isFetching: false,
         isLoggedIn: true,
         error: action.error
+      };
+    case 'SET_SUBMISSION_COUNT':
+      return {
+        ...state,
+        submissions: 1
       };
     default:
       return state;

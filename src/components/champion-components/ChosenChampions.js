@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import axios from 'axios';
 import { history } from 'AppRouter';
 
-import {resetChampionState} from 'actions';
+import {resetChampionState, submissionSuccess} from 'actions';
 import ChampionContainer from './ChampionContainer';
 
 class ChosenChampions extends React.Component {
@@ -20,9 +20,10 @@ class ChosenChampions extends React.Component {
           }
         }
       );
+      dispatch(submissionSuccess());
       history.push('/dashboard');
     } catch (e) {
-      Promise.reject(new Error('something went wrong'));
+      throw new Error('Could not submit picks');
     }
   }
 
@@ -31,11 +32,11 @@ class ChosenChampions extends React.Component {
     var message, className, isDisabled=true;
     if(chosen.length < 14){
       message = `You have ${14-chosen.length} left to choose`;
-      className = 'button-disabled';
+      className = 'big-button-disabled';
       isDisabled = true;
     } else {
       message = 'Submit Champions!';
-      className = 'button';
+      className = 'big-button';
       isDisabled = false;
     }
 

@@ -23,10 +23,9 @@ class ChampSelectPage extends React.Component {
   render () {
     return (
       <div>
-        <Header authToken={this.props.auth}/>
         <div>
           <div className='container'>
-            <div className='box-alt'>
+            <div className='box'>
               <ChampionSearch/>
               <ChampionList/>
               <ChosenChampions/>

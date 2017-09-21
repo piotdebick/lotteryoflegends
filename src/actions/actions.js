@@ -28,6 +28,11 @@ export var toggleChampion = (id) => {
   };
 };
 
+export var submissionSuccess = () => {
+  return {
+    type: 'SET_SUBMISSION_COUNT'
+  }
+}
 export var setToken = (authToken) => {
   return {
     type: 'SET_TOKEN',
@@ -209,7 +214,7 @@ export var checkAuthToken = (authToken) => {
     try {
       axios.defaults.headers.common['x-auth'] = authToken;
       var res = await axios.get('http://localhost:3001/users/me');
-
+      localStorage.setItem('authToken', authToken);
       dispatch(requestSuccess({
         type:'SET_TOKEN',
         info: authToken

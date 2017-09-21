@@ -1,18 +1,74 @@
 .header {
-  background: $dark-blue;
+  position:fixed;
+  background: $trans-blue;
+  margin:auto;
+  margin-bottom: $s-size;
+  @media (min-width: $desktop-breakpoint) {
+    position:relative;
+    width:80%;
+    border-radius: 0 0 20rem 20rem;
+  }
 }
 
+
+
 .header__content {
-  align-items: center;
+  height:100%;
+  font-weight:bolder;
+  // border: 2px solid white;
   display: flex;
-  justify-content: space-evenly;
-  padding: $s-size 0;
+}
+
+.header__content-title {
+  display:flex;
+  //border: 2px dotted white;
+  flex-grow: 2;
+}
+
+.header__content-buttons {
+  display:flex;
+  //border: 2px dotted white;
+  flex-grow: 1;
+}
+
+.header__button{
+  flex-grow: 1;
+  align-self: center;
+  margin:0 $s-size;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: $xs-size;
+
+  @media (min-width: $desktop-breakpoint) {
+    //border-left: 2px solid darken($dark-blue, 15%);
+    margin:0;
+    padding:$l-size;
+    justify-content: flex-end;
+    // border: 2px solid white;
+    transition: background-color .35s ease-in-out;
+    &:hover{
+      background-color: darken($dark-blue, 5%);
+
+    }
+  }
 }
 
 .header__title {
+  font-size: $xs-size;
+  padding:$s-size;
+  margin-left: $xs-size;
+  align-self: center;
+  justify-content: flex-start;
+  //border: 2px solid white;
   color: white;
   text-decoration: none;
   h1 {
     margin: 0;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    padding: 0 $l-size;
+    margin:0 $l-size;
+    font-size: $m-size;
   }
 }

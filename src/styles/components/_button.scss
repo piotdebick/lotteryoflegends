@@ -2,16 +2,15 @@
   outline:none;
   background: $blue;
   border: none;
-  justify-content: center;
   border-bottom: 5px solid darken($blue, 15%);
   color: white;
-  max-height:$xl-size;
-  display: inline-block;
+  text-align: center;
   font-size: $font-size-large;
   font-weight: 300;
   line-height: 1;
   padding: $s-size;
   text-decoration: none;
+  margin-bottom: $m-size;
   &:hover{
       border-top: 5px solid rgba(0, 0, 0, 0.01);
       border-bottom: 0;
@@ -23,4 +22,33 @@
   @extend .button;
   background: $light-red;
   border-bottom: 5px solid darken($light-red, 15%);
+}
+
+.big {
+  color: $blue;
+  padding:$m-size;
+  font-weight: bold;
+  border-radius: 1rem;
+  text-align: center;
+  height: $xxl-size;
+  border: 2px solid $blue;
+  transition: .35s ease-in-out;
+  margin-bottom: $m-size;
+  background-color: rgba(0, 0, 0, 0.01);
+}
+.big-button {
+  @extend .big;
+  margin: 0 10rem;
+  &:hover{
+    cursor:pointer;
+    color: white;
+    background-color: $blue;
+  }
+}
+
+.big-button-disabled {
+  @extend .big;
+  color:white;
+  background-color: $light-red;
+  border: 2px solid $light-red;
 }

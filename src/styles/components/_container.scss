@@ -1,9 +1,9 @@
 .container {
   display: flex;
-  justify-content: center;
   max-width: 150rem;
-  //border: 3px solid white;
+  border: 3px solid white;
   margin:auto;
+  justify-content: center;
 }
 
 .container__title {
@@ -11,16 +11,19 @@
   align-self: auto;
   text-align: center;
   color:white;
-  font-size: $m-size;
+  font-size: $l-size;
   font-weight: bolder;
+  margin-bottom: $s-size;
 }
 .container__subtitle{
-  align-self: auto;
+  align-content: auto;
+  text-align: center;
   font-size: $m-size;
 }
 
 .container__body{
-    margin: 0 auto;
+    border: 6px solid white;
+    margin:auto;
     overflow: hidden;
 }
 

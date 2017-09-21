@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
+import Header from 'components/page-components/Header';
 
 export const PublicRoute = ({
   isAuthenticated,
@@ -11,7 +12,10 @@ export const PublicRoute = ({
       isAuthenticated ? (
         <Redirect to="/dashboard" />
       ) : (
+        <div>
+          <Header authToken={''} isAuth={isAuthenticated}/>
           <Component {...props} />
+        </div>
         )
     )} />
   );
