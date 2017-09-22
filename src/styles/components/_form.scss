@@ -1,10 +1,13 @@
 .form {
   display: flex;
+  margin:auto;
   padding: 0 $l-size;
-  //border: 3px solid white;
+  border: 3px solid blue;
   flex-direction: column;
+  width:50rem;
   >*{
     margin-bottom: $m-size;
+    border-radius: 5px;
   }
 }
 
@@ -22,6 +25,7 @@
 }
 
 .form__subtext {
+  border-radius: 5px;
   text-align:center;
   font-weight:bolder;
   padding:$s-size;

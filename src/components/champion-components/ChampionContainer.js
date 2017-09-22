@@ -23,7 +23,7 @@ class ChampionContainer extends React.Component {
           }
         }
         }}>
-        <Champion name={champ}/>
+          <Champion name={champ}/>
       </div>
     )
   }

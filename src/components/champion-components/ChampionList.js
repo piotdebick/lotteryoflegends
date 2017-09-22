@@ -17,7 +17,7 @@ class ChampionList extends React.Component {
          return searchText.length === 0 || name.indexOf(searchText.toLowerCase()) > -1;
        }).map((champion) => {
         return (
-          <li className='list-item list-item__data-hover ' key={champion.id}>
+          <li className='list-item list-item__data-hover' key={champion.id}>
             <ChampionContainer styleThis={true} clickable={isClickable} champ={champion.key} {...champion}/>
           </li>
         )

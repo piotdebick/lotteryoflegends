@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from 'actions';
 
-export const LoggedIn = ({...props}) => (
+const LoggedIn = ({...props}) => (
   <div className='header__content-buttons'>
     <Link className='header__button' to="/about">
       <h1>ABOUT</h1>
     </Link>
-    <Link className='header__button' to="/" onClick={() => {
-      logout(props.authToken);
+    <a className='header__button' onClick={() => {
+      props.logout(props.authToken);
       localStorage.removeItem('authToken');
     }}>
       <h1>LOGOUT</h1>
-    </Link>
+    </a>
   </div>
 );
 
-export const LoggedOut = () => (
+const LoggedOut = () => (
   <div className='header__content-buttons'>
     <Link className='header__button' to="/about">
       <h1>ABOUT</h1>
@@ -31,7 +31,7 @@ export const LoggedOut = () => (
   </div>
 );
 
-export const Header = ({ ...props, logout}) => (
+const Header = ({ ...props, logout}) => (
   <header className='header'>
     <div className='header__title'>
       <div className='header__content'>
@@ -42,7 +42,7 @@ export const Header = ({ ...props, logout}) => (
         </div>
           {
             props.isAuth ?
-              <LoggedIn authToken={props.authToken.authToken}/> :
+              <LoggedIn authToken={props.authToken.authToken} logout={logout}/> :
               <LoggedOut />
           }
       </div>

@@ -1,21 +1,23 @@
 .container {
   display: flex;
-  max-width: 150rem;
-  border: 3px solid white;
+  width: 100%;
+  border: 3px solid blue;
   margin:auto;
   justify-content: center;
+  order:2;
 }
 
 .container__title {
   //border: 3px solid white;
   align-self: auto;
   text-align: center;
-  color:white;
-  font-size: $l-size;
+  color:$off-white;
+  font-size: $xm-size;
   font-weight: bolder;
-  margin-bottom: $s-size;
+  margin-top: $l-size;
 }
 .container__subtitle{
+  color:$blue;
   align-content: auto;
   text-align: center;
   font-size: $m-size;

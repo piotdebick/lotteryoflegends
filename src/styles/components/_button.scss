@@ -25,7 +25,9 @@
 }
 
 .big {
-  color: $blue;
+
+  color: white;
+  background-color: $blue;
   padding:$m-size;
   font-weight: bold;
   border-radius: 1rem;
@@ -34,15 +36,15 @@
   border: 2px solid $blue;
   transition: .35s ease-in-out;
   margin-bottom: $m-size;
-  background-color: rgba(0, 0, 0, 0.01);
+
 }
 .big-button {
   @extend .big;
-  margin: 0 10rem;
+  margin: $xxs-size;
   &:hover{
     cursor:pointer;
-    color: white;
-    background-color: $blue;
+    color: $blue;
+    background-color: rgba(0, 0, 0, 0.01);
   }
 }
 

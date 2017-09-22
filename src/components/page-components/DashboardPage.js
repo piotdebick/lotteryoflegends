@@ -61,8 +61,6 @@ class DashboardPage extends React.Component {
 
   render () {
     return (
-      <div>
-        <div>
           <div className='container'>
             <div className='box'>
               <div className='container__title'>THIS WEEKS FREE CHAMPIONS</div>
@@ -72,8 +70,6 @@ class DashboardPage extends React.Component {
               {this.previousTickets(this.props.tickets)}
             </div>
           </div>
-        </div>
-      </div>
     )
   }
 };

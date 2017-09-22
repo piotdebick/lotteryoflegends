@@ -1,0 +1,10 @@
+.wrapper{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  border: 3px solid white;
+}
+.wrapper-main{
+  width:100%;
+  border: 5px solid yellow;
+}

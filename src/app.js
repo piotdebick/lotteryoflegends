@@ -21,7 +21,6 @@ var listener = () => {
     if (history.location.pathname === '/'
     ||  history.location.pathname === '/login'
     || history.location.pathname === '/register'
-    || history.location.pathname === '/about'
     ) {
       history.push('/dashboard');
     }

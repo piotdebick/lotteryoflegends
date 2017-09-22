@@ -1,16 +1,17 @@
 .header {
   position:fixed;
   background: $trans-blue;
+  flex: 1 100%;
   margin:auto;
   margin-bottom: $s-size;
   @media (min-width: $desktop-breakpoint) {
-    position:relative;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
     width:80%;
     border-radius: 0 0 20rem 20rem;
   }
 }
-
-
 
 .header__content {
   height:100%;
@@ -42,6 +43,7 @@
 
   @media (min-width: $desktop-breakpoint) {
     //border-left: 2px solid darken($dark-blue, 15%);
+    cursor: pointer;
     margin:0;
     padding:$l-size;
     justify-content: flex-end;

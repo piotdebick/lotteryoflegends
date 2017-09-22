@@ -9,6 +9,7 @@ import RegisterPage from 'components/page-components/RegisterPage';
 import Header from 'components/page-components/Header';
 import AboutPage from 'components/page-components/AboutPage';
 import HomePage from 'components/page-components/HomePage';
+import Aside from 'components/page-components/Aside';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -17,16 +18,19 @@ export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
-    <div>
-      <Switch>
-        <PublicRoute path="/" component={HomePage} exact={true} />
-        <PublicRoute path="/login" component={LoginPage}/>
-        <PublicRoute path="/register" component={RegisterPage}/>
-        <PrivateRoute path="/dashboard" component={DashboardPage} />
-        <PrivateRoute path="/champselect" component={ChampSelectPage} />
-        <Route path="/about" component={AboutPage}/>
-
-      </Switch>
+    <div className='wrapper'>
+      <div className='wrapper-main'>
+        <Switch>
+          <PublicRoute path="/" component={HomePage} exact={true} />
+          <PublicRoute path="/login" component={LoginPage}/>
+          <PublicRoute path="/register" component={RegisterPage}/>
+          <PrivateRoute path="/dashboard" component={DashboardPage} />
+          <PrivateRoute path="/champselect" component={ChampSelectPage} />
+          <Route path="/about" component={AboutPage}/>
+        </Switch>
+      </div>
+      <Aside class={'aside aside-1'}/>
+      <Aside class={'aside aside-2'}/>
     </div>
   </Router>
 );

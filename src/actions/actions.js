@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { history } from 'AppRouter';
 
 export var setSearchText = (searchText) => {
   return {
@@ -159,6 +160,7 @@ export var logout = (token) => {
       dispatch(requestSuccess({
         type:'LOGOUT_SUCCESS'
       }));
+      history.push('/');
       dispatch(requestSuccess({
         type:'REMOVE_TOKEN'
       }));

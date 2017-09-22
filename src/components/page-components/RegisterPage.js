@@ -54,8 +54,7 @@ class Register extends React.Component {
       <div className='container'>
         <div className='box'>
           <div className='box__title'>
-            <h2>LOTTERY OF LEGENDS</h2>
-            <h4>Register with your Summoner name!</h4>
+            <h3>Register with your Summoner name!</h3>
           </div>
           <LocalForm
             className='form'
@@ -90,8 +89,8 @@ class Register extends React.Component {
                 {this.state.code}
               </div>
             </div>
-            <button className='button' type="submit">Sign up!</button>
-            <button className='button' type="button" onClick={()=>{history.push('/')}}>Back</button>
+            <button className='big-button' type="submit">Sign up!</button>
+            <button className='big-button' type="button" onClick={()=>{history.push('/')}}>Back</button>
           </LocalForm>
         </div>
       </div>
@@ -99,4 +98,4 @@ class Register extends React.Component {
   }
 };
 
-export default Register;
+export default connect()(Register);

@@ -8,8 +8,7 @@ export const LoginPage = ({ login }) => (
   <div className='container'>
     <div className='box'>
       <div className='box__title'>
-        <h2>LOTTERY OF LEGENDS</h2>
-        <h4>Login using your Summoner name!</h4>
+        <h3>Login using your Summoner name!</h3>
       </div>
       <LocalForm
         className='form'
@@ -33,8 +32,8 @@ export const LoginPage = ({ login }) => (
           <option value="ru">RU</option>
           <option value="pbe1">NA</option>
         </Control.select>
-        <button type="submit" className="button">Login</button>
-        <button type="button" className="button" onClick={() => {history.push('/register')}}>Register</button>
+        <button type="submit" className="big-button">Login</button>
+        <button type="button" className="big-button" onClick={() => {history.push('/register')}}>Register</button>
       </LocalForm>
     </div>
   </div>
