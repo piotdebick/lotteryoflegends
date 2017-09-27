@@ -1,14 +1,17 @@
 * {
   box-sizing: border-box;
+  @import url('https://fonts.googleapis.com/css?family=Domine');
+  font-family: Domine;
 }
 
 html {
   font-size: 62.5%;
-  background: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg) no-repeat center center fixed;
+  background: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ezreal_7.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
 }
 
 body {
@@ -31,14 +34,17 @@ button:disabled {
 }
 
 
-@media all and (min-width: 600px){
-  .aside{ flex: 1 auto; }
-}
-
 @media all and (min-width:$desktop-breakpoint ){
-  .wrapper-main{flex:2 0px;}
-
-  .aside-1 {order: 1};
-  .wrapper-main{order:2};
-  .aside-2{order:3}
+  .aside-1 {
+    order: 1;
+  }
+  .wrapper-main{
+    order:2;
+  }
+  .aside-2{
+    order:3;
+  }
+  .footer{
+    order:4;
+  }
 }

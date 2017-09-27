@@ -6,7 +6,7 @@ class ChampionSearch extends React.Component {
   render () {
     var {dispatch, searchText} = this.props;
     return (
-      <div className='form'>
+      <div className='form form-search'>
         <input className='form__input' type="search" ref="searchText" placeholder="Search Champions" value={searchText} onChange={ ()=>{
           var searchText = this.refs.searchText.value;
           dispatch(setSearchText(searchText));

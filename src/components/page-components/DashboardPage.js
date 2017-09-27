@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import { championsFetch, ticketFetch } from 'actions';
 import { history } from 'AppRouter';
 import Header from './Header';
-import ChampionDisplay from './ChampionDisplay';
+import TicketDisplay from './TicketDisplay';
+import UserWelcome from './UserWelcome';
 
 class DashboardPage extends React.Component {
   checkTickets (user, dispatch) {
@@ -35,39 +36,13 @@ class DashboardPage extends React.Component {
     }
   }
 
-  previousTickets(tickets) {
-    if(tickets.length > 0){
-      return tickets.map((ticket, i) =>
-        <div key={i}>
-          <div className='container__subtitle'>{ticket.createdAt}</div>
-          <ChampionDisplay champions={ticket.championPicks}/>
-        </div>
-      )
-    }
-  }
-
-  checkSubmissions() {
-    var {submissions} = this.props;
-    if(submissions < 1) {
-      return (
-        <div className='big-button' onClick={()=>{history.push('/champselect')}}>SUBMIT THIS WEEKS CHAMPION TICKET</div>
-      )
-    } else {
-      return (
-        <div className='button-disabled'>THIS WEEKS TICKET HAS BEEN SUBMITTED</div>
-      )
-    }
-  }
-
   render () {
     return (
           <div className='container'>
             <div className='box'>
-              <div className='container__title'>THIS WEEKS FREE CHAMPIONS</div>
-                <ChampionDisplay champions={this.props.freeChamps}/>
-                {this.checkSubmissions()}
-              <div className='container__title'>PREVIOUS TICKETS</div>
-              {this.previousTickets(this.props.tickets)}
+              <UserWelcome user={this.props.user}/>
+              <TicketDisplay customClass='ticket-1' type={'tickets'} tickets={this.props.tickets}/>
+              <TicketDisplay customClass='ticket-2' type={'free'} tickets={this.props.freeChamps}/>
             </div>
           </div>
     )
@@ -78,9 +53,8 @@ const mapStateToProps = (state) => {
   return{
     tickets: state.league.tickets,
     freeChamps:state.league.freeChampions,
-    auth: state.auth,
     userID: state.user.userID,
-    submissions: state.user.submissions
+    user: state.user
   };
 }
 export default connect(mapStateToProps)(DashboardPage);

@@ -43,7 +43,7 @@ class ChosenChampions extends React.Component {
     var renderChampions = () => {
        return chosen.map((champion) => {
         return (
-          <li className='list-item list-item__data-hover' key={champion.champ}>
+          <li className='list-item list-item__data-hover list-item__data-chosen' key={champion.champ}>
             <ChampionContainer styleThis={false} {...champion}/>
           </li>
         )

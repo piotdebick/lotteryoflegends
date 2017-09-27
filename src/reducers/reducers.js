@@ -110,7 +110,15 @@ export var signupReducer = (state = {isSubmitting: false, isSignedUp: false, err
   }
 };
 
-export var userReducer = (state={username:'', region:'', submissions: 0, isFetching:false, error:null }, action) => {
+export var userReducer = ( state = {
+                          username:'',
+                          region:'',
+                          summonerLevel:'',
+                          profileIconId:'',
+                          submissions: 0,
+                          isFetching:false,
+                          error:null
+                          }, action) => {
   switch(action.type){
     case 'SET_USER_DATA':
       return {
@@ -119,7 +127,9 @@ export var userReducer = (state={username:'', region:'', submissions: 0, isFetch
         username: action.info.username,
         userID: action.info._id,
         region: action.info.region,
-        submissions: action.info.submissions
+        submissions: action.info.submissions,
+        summonerLevel: action.info.summonerLevel,
+        profileIconId: action.info.profileIconId,
       };
     case 'LOGIN_SUCCESS':
       return {
@@ -144,6 +154,8 @@ export var userReducer = (state={username:'', region:'', submissions: 0, isFetch
         isFetching: false,
         username: '',
         region: '',
+        summonerLevel:'',
+        profileIconId:'', 
         error: null
       };
     case 'LOGOUT_FAILED':

@@ -1,31 +1,93 @@
 .box {
-  margin: 10rem auto;
   padding: $l-size;
-  max-width: 40rem;
-  border: 3px solid yellow;
-  justify-content:center;
-  background-color: $trans-blue;
-  border-radius: 10px;
-  @media (min-width: $desktop-breakpoint) {
-    max-width: 70rem;
+  //border: 3px solid green;
+  background-color: $trans-black;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  >h2{
+    color:$light-gold;
   }
+
+}
+
+.box__title{
+  margin-bottom: $xs-size;
+  font-size: $xm-size;
+  font-weight:bolder;
+  border-bottom: 1px solid lighten($light-gold, 15%);
+  text-align:center;
+  width:100%;
+  color: $light-gold;
+  >h3 {
+    font-size:$xm-size;
+  }
+}
+
+.box__outline{
+  flex:3 100%;
+  order:1;
+}
+.box__face {
+
+  background-color: $trans-black;
+  padding:$m-size;
+  align-items: center;
+  //border: 2px solid white;
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  border-top: 2px solid lighten($light-gold, 10%);
+  border-bottom: 2px solid lighten($light-gold, 10%);
+  > img {
+    max-width: 15rem;
+    max-height: 15rem;
+    border:2px solid $light-gold;
+    border-radius: 100%;
+  }
+  > h2 {
+    border-bottom: 1px solid white;
+    margin-bottom: $xxs-size;
+    color:$light-gold;
+  }
+}
+.box__face__details{
+  list-style:none;
+  padding-left:0;
+  > li {
+    color:lighten($light-gold, 20%);
+    font-size:$m-size;
+  }
+}
+.box-home {
+  @extend .box;
+  background-color: none;
+  justify-content: center;
+}
+
+.box-home__title {
+  @extend .box__title;
+  font-size: $xxl-size;
+  border-bottom:none;
+  width: 35rem;
+}
+
+.box-home__subtitle {
+  border-bottom: 1px solid lighten($light-gold, 15%);
+  padding-bottom: $s-size;
+  text-align:center;
+  width:100%;
+  color: lighten($light-gold,15%);
 }
 
 .box-alt {
   @extend .box;
   padding: $m-size;
   margin:auto;
+  max-width:50rem;
   overflow-y: scroll;
   height:25rem;
-  border-bottom: 2px double $trans-black;
-  border: 3px solid red;
-}
-
-.box__title{
-  margin-bottom: $l-size;
-  text-align:center;
-  color: $off-white;
-  >h2 {
-    font-size:$l-size;
-  }
+  border-bottom: 2px solid lighten($light-gold, 15%);
+  border-top: 2px solid lighten($light-gold, 15%);
+  //border: 3px solid white;
 }

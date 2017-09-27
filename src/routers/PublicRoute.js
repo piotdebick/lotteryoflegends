@@ -13,7 +13,6 @@ export const PublicRoute = ({
         <Redirect to="/dashboard" />
       ) : (
         <div>
-          <Header authToken={''} isAuth={isAuthenticated}/>
           <Component {...props} />
         </div>
         )

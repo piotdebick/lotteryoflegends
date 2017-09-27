@@ -1,10 +1,9 @@
 .container {
-  display: flex;
-  width: 100%;
-  border: 3px solid blue;
-  margin:auto;
-  justify-content: center;
-  order:2;
+  //border: 3px solid blue;
+  
+  @media all and (min-width: $desktop-breakpoint){
+    min-height:80vh;
+  }
 }
 
 .container__title {
@@ -17,16 +16,16 @@
   margin-top: $l-size;
 }
 .container__subtitle{
-  color:$blue;
+  margin-top: $m-size;
+  color:$off-white;
   align-content: auto;
   text-align: center;
   font-size: $m-size;
 }
 
 .container__body{
-    border: 6px solid white;
+    //border: 6px solid white;
     margin:auto;
-    overflow: hidden;
 }
 
 .container__footer {

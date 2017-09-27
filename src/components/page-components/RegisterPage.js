@@ -53,15 +53,16 @@ class Register extends React.Component {
     return (
       <div className='container'>
         <div className='box'>
-          <div className='box__title'>
-            <h3>Register with your Summoner name!</h3>
-          </div>
+
           <LocalForm
             className='form'
             model="user"
             onSubmit={(user) => this.handleSubmit(user)}
             initialState={{region: 'na1'}}
           >
+            <div className='form__title'>
+              <h3>Register with your Summoner name!</h3>
+            </div>
             <Control.text className='form__input' model="user.username" id="user.username" placeholder='Summoner Name' required/>
 
             <Control.text className='form__input' model="user.password" type="password" id="user.password" placeholder='Password' required/>

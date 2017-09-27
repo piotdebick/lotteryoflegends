@@ -22,17 +22,14 @@ class ChampSelectPage extends React.Component {
 
   render () {
     return (
-      <div>
-        <div>
           <div className='container'>
             <div className='box'>
+              <div className='box__title'>WHICH CHAMPIONS WILL BE FREE NEXT WEEK?</div>
               <ChampionSearch/>
               <ChampionList/>
               <ChosenChampions/>
             </div>
           </div>
-        </div>
-      </div>
     )
   }
 };

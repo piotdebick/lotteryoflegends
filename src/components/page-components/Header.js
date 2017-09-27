@@ -41,8 +41,8 @@ const Header = ({ ...props, logout}) => (
           </Link>
         </div>
           {
-            props.isAuth ?
-              <LoggedIn authToken={props.authToken.authToken} logout={logout}/> :
+            props.auth ?
+              <LoggedIn authToken={props.authToken} logout={logout}/> :
               <LoggedOut />
           }
       </div>
@@ -52,7 +52,8 @@ const Header = ({ ...props, logout}) => (
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth.isAuthenticated
+    auth: state.auth.isAuthenticated,
+    authToken: state.auth.authToken
   }
 };
 
@@ -60,4 +61,4 @@ const mapDispatchToProps = (dispatch) => ({
   logout: (authToken) => dispatch(logout(authToken))
 });
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

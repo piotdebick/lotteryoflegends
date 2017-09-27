@@ -1,14 +1,28 @@
 .form {
-  display: flex;
+  display:flex;
   margin:auto;
-  padding: 0 $l-size;
-  border: 3px solid blue;
+  border-radius: 2rem;
+  justify-content: center;
+  padding: $s-size $l-size;
+  //border: 3px solid blue;
   flex-direction: column;
-  width:50rem;
-  >*{
-    margin-bottom: $m-size;
-    border-radius: 5px;
+  > * {
+    margin:  $xs-size 0;
+    border-radius: $xxs-size;
   }
+  @media all and (min-width: $desktop-breakpoint){
+    width:50rem;
+  }
+}
+.form-search{
+  width:100%;
+  @media all and (min-width: $desktop-breakpoint){
+    width:60%;
+  }
+}
+.form__title {
+  font-size:$m-size;
+  text-align: center;
 }
 
 .form__input {

@@ -1,0 +1,15 @@
+.footer {
+  background: $trans-black;
+  flex: 1 100%;
+  margin:auto;
+  margin-top: $s-size;
+  @media (min-width: $desktop-breakpoint) {
+  min-height: 10vh;
+  }
+}
+
+.footer_content{
+  text-align: center;
+  padding: $m-size;
+  margin: 0 $l-size;
+}

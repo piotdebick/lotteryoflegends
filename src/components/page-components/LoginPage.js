@@ -7,15 +7,16 @@ import { login } from 'actions';
 export const LoginPage = ({ login }) => (
   <div className='container'>
     <div className='box'>
-      <div className='box__title'>
-        <h3>Login using your Summoner name!</h3>
-      </div>
+
       <LocalForm
         className='form'
         model="user"
         onSubmit={(user) => login(user)}
         initialState={{region: 'na1'}}
       >
+        <div className='form__title'>
+          <h3>Login using your Summoner name!</h3>
+        </div>
         <Control.text className='form__input' model="user.username" id="user.username" placeholder='Summoner Name' required/>
         <Control.text className='form__input' model="user.password" type="password" id="user.password" placeholder='Password' required/>
         <Control.select className='form__input' model="user.region" id="user.region" required>

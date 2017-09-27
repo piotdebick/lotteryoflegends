@@ -8,9 +8,11 @@ $water-blue: #336699;
 $dark-blue: #364051;
 $off-white: #f7f7f7;
 $light-red: #ff9e95;
+$light-gold: lighten(gold, 20%);
+$dark-gold: darken(gold, 20%);
 
-$trans-black: rgba(0, 0, 0, 0.68);
-$trans-blue: rgba(#364052, 0.90);
+$trans-black: rgba(0, 0, 0, 0.80);
+$trans-blue: rgba(#2d2d2d, 0.9);
 $trans-white: rgba(#ffffff, 0.53);
 
 
@@ -22,7 +24,7 @@ $xxs-size: 0.4rem;
 $xs-size: 0.8rem;
 $s-size: 1.2rem;
 $m-size: 1.6rem;
-$xm-size: 2.4rem; 
+$xm-size: 2.4rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
 $xxl-size: 6.4rem;

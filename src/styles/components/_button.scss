@@ -28,19 +28,21 @@
 
   color: white;
   background-color: $blue;
-  padding:$m-size;
+  align-items: center;
   font-weight: bold;
   border-radius: 1rem;
   text-align: center;
   height: $xxl-size;
+  line-height: $xxl-size;
   border: 2px solid $blue;
   transition: .35s ease-in-out;
   margin-bottom: $m-size;
 
+
 }
 .big-button {
   @extend .big;
-  margin: $xxs-size;
+  margin: $xs-size 0;
   &:hover{
     cursor:pointer;
     color: $blue;
@@ -50,7 +52,7 @@
 
 .big-button-disabled {
   @extend .big;
-  color:white;
-  background-color: $light-red;
-  border: 2px solid $light-red;
+  color:black;
+  background-color: lighten($light-gold, 10%);
+  border: 2px solid $light-gold;
 }

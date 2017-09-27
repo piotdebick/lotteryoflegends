@@ -1,4 +1,10 @@
 .aside {
-  width:100%;
-  border: 5px solid red;
+  flex:1 100%;
+  //border: 5px solid red;
+  min-height: 90vh;
+  @media all and (min-width: 300px){
+     flex: 1 auto;
+     margin: 0 $m-size;
+     min-height: 0;
+  }
 }
