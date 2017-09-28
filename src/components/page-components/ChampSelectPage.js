@@ -17,7 +17,7 @@ class ChampSelectPage extends React.Component {
       complete: 'COMPLETE_CHAMPIONS_FETCH',
       fail: 'FAIL_CHAMPIONS_FETCH'
     }
-    dispatch(championsFetch('http://localhost:3001/champs', type));
+    dispatch(championsFetch('https://api.lotteryoflegends.com/champs', type));
   }
 
   render () {

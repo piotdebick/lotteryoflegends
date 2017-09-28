@@ -14,7 +14,7 @@ class Register extends React.Component {
   async handleSubmit (user) {
     try {
       var {dispatch} = this.props;
-      var res = await axios.post('http://localhost:3001/users', {
+      var res = await axios.post('https://api.lotteryoflegends.com/users', {
         username: user.username,
         password: user.password,
         region: user.region,
@@ -34,7 +34,7 @@ class Register extends React.Component {
 
   async componentDidMount () {
     try {
-      var res = await axios.get('http://localhost:3001/code');
+      var res = await axios.get('https://api.lotteryoflegends.com/code');
       this.setState((prevState, props) => {
         return {
           code: res.data

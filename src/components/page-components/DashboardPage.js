@@ -23,7 +23,7 @@ class DashboardPage extends React.Component {
       complete: 'COMPLETE_FREE_CHAMPIONS_FETCH',
       fail: 'FAIL_FREE_CHAMPIONS_FETCH'
     }
-    dispatch(championsFetch('http://localhost:3001/champs/free', type));
+    dispatch(championsFetch('https://api.lotteryoflegends.com/champs/free', type));
     //dispatch for previous tickets
     if(userID){
       this.checkTickets(userID, dispatch);

@@ -30,7 +30,7 @@ class UserContainer extends React.Component{
           <img
               className=''
               type="image"
-              src={`http://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${this.props.user.profileIconId}.png`}
+              src={`https://ddragon.leagueoflegends.com/cdn/6.24.1/img/profileicon/${this.props.user.profileIconId}.png`}
             />
             <h2>
               Welcome, {this.props.user.username}!
