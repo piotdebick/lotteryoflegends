@@ -46,6 +46,10 @@
     "validator": "8.0.0",
     "webpack": "3.1.0"
   },
+  "engines": {
+      "node": "7.10.1",
+      "npm": "4.2.0"
+    },
   "devDependencies": {
     "cross-env": "5.0.5",
     "dotenv": "4.0.0",
