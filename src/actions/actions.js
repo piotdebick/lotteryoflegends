@@ -112,7 +112,7 @@ export var ticketFetch = (userID, type) => {
       info: ''
     }));
     try{
-      var res = await axios.get(`http://localhost:3001/pick/user/${userID}`);
+      var res = await axios.get(`https://api.lotteryoflegends.com/pick/user/${userID}`);
       dispatch(requestSuccess({
         //COMPLETE_TICKET_FETCH
         type: type.complete,
@@ -131,7 +131,7 @@ export var ticketFetch = (userID, type) => {
 export var login = (user) => {
   return async (dispatch, getState) => {
     try{
-      var res = await axios.post('http://localhost:3001/users/login', {
+      var res = await axios.post('https://api.lotteryoflegends.com/users/login', {
           username: user.username,
           password: user.password,
           region: user.region
@@ -156,7 +156,7 @@ export var logout = (token) => {
       dispatch(requestAttempt({
         type:'LOGOUT_ATTEMPT'
       }));
-      await axios.delete('http://localhost:3001/users/me/token');
+      await axios.delete('https://api.lotteryoflegends.com/users/me/token');
       dispatch(requestSuccess({
         type:'LOGOUT_SUCCESS'
       }));
@@ -180,7 +180,7 @@ export var signup = (user) => {
         type:'SIGNUP_ATTEMPT',
         info: user
       }));
-      var res = await axios.post('http://localhost:3001/users', {
+      var res = await axios.post('https://api.lotteryoflegends.com/users', {
         username: user.username,
         password: user.password,
         region: user.region,
@@ -203,7 +203,7 @@ export var secretCode = () => {
   return async (dispatch, getState) => {
     try{
       dispatch(getCodeAttempt());
-      var res = await axios.get('http://localhost:3001/code');
+      var res = await axios.get('https://api.lotteryoflegends.com/code');
       dispatch(getCodeSuccess(res));
     } catch (e) {
       dispatch(getCodeFailed(e));
@@ -215,7 +215,7 @@ export var checkAuthToken = (authToken) => {
   return async (dispatch, getState) => {
     try {
       axios.defaults.headers.common['x-auth'] = authToken;
-      var res = await axios.get('http://localhost:3001/users/me');
+      var res = await axios.get('https://api.lotteryoflegends.com/users/me');
       localStorage.setItem('authToken', authToken);
       dispatch(requestSuccess({
         type:'SET_TOKEN',

@@ -11,7 +11,7 @@ class ChosenChampions extends React.Component {
     var {dispatch, userID, token} = this.props;
     dispatch(resetChampionState(chosen));
     try{
-      await axios.post('http://localhost:3001/pick', {
+      await axios.post('https://api.lotteryoflegends.com/pick', {
           "championPicks": chosen,
           "_creator": userID
         }, {
